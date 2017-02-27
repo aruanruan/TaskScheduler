@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><!--Converted at: Mon Sep 22 10:56:11 CST 2014-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Ini">
+
+  <resultMap id="get-all-ini" type="ini">
+    <result property="iniName" column="INI_NAME"/>
+    <result property="iniDesc" column="INI_DESC"/>
+    <result property="iniValue" column="INI_VALUE"/>
+	<result property="iniNameCn" column="INI_NAME_CN"/>
+  </resultMap>
+  
+  <resultMap id="activity-ini" type="ini">
+    <result property="iniName" column="INI_NAME"/>
+    <result property="iniDesc" column="INI_DESC"/>
+    <result property="iniValue" column="INI_VALUE"/>
+  </resultMap>
+
+  <select id="getAllIni" resultMap="get-all-ini">
+    select * from tb_ini
+  </select>
+
+  <select id="getIniById" parameterType="java.lang.String" resultMap="get-all-ini">
+    select * from tb_ini where INI_NAME = #{value}
+  </select>
+  
+  <select id="getAllActivityIni" resultMap="activity-ini">
+    select INI_NAME,INI_DESC,INI_VALUE from tb_activity_ini where begin_time&lt;sysdate() and end_time &gt;sysdate()
+  </select>
+
+  <select id="getActivityIniById" parameterType="java.lang.String" resultMap="activity-ini">
+    select INI_NAME,INI_DESC,INI_VALUE from tb_activity_ini where INI_NAME = #{value}
+  </select>
+  
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<properties>
+		<property name="dialectClass"
+			value="com.lede.tech.database.dao.pagination.dialect.MySQLDialect" />
+	</properties>
+	<settings>
+		<setting name="cacheEnabled" value="false"/>
+	</settings>
+	<typeAliases>
+		<typeAlias alias="ini" type="org.mwlv.sample.vo.LotteryIni" />
+		<typeAlias alias="account" type="org.mwlv.sample.vo.Account" />
+	</typeAliases>
+	<!--
+	<mappers>
+		<mapper resource="mybatis/Mybatis_Stake_Number_Source_File.xml"/>
+		 <mapper resource="mybatis/Mybatis_Hit_Schedule.xml" />   <mapper resource="mybatis/Mybatis_MyHit.xml" 
+			/> <mapper resource="mybatis/Mybatis_Hit.xml" /> <mapper resource="mybatis/Mybatis_Hit_Detail.xml" 
+			/> <mapper resource="mybatis/Test.xml" />
+	</mappers>
+	 -->
+	  <mappers>
+	 	<mapper resource="mybatis/IniMapper.xml"/>
+        <mapper resource="mybatis/AccountMapper.xml"/>
+	 </mappers>
+</configuration>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><!--Converted at: Mon Sep 22 10:56:11 
+	CST 2014 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Account">
+
+	<resultMap id="accountMap" type="account">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="balance" column="balance" />
+	</resultMap>
+
+	<insert id="insertAccount" parameterType="org.mwlv.sample.vo.Account">
+		insert into account
+		(name, balance)
+		values
+		(#{name,jdbcType=VARCHAR}, #{balance,jdbcType=DECIMAL})
+	</insert>
+
+	<update id="updateAccountBalance" parameterType="java.util.Map">
+		update account
+		set balance = #{balance,jdbcType=DECIMAL}
+		where name =
+		#{name,jdbcType=VARCHAR}
+	</update>
+
+	<select id="getAccountByName" parameterType="java.util.Map"
+		resultMap="accountMap">
+		select * from account where name = #{name,jdbcType=VARCHAR}
+	</select>
+
+</mapper>
