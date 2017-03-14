@@ -14,11 +14,9 @@ public class TestController
 {
 	
 	private final Log LOG = LogFactory.getLog(getClass());
-	//@Resource
-	//JedisProxy proxy;
+
 
 	/***
-	 * 开始游戏
 	 * @param request
 	 * @param response
 	 */
@@ -31,38 +29,4 @@ public class TestController
 		return "test ok!";
 	}
 
-	@RequestMapping(value = "/testRedis.html")
-	@ResponseBody
-	public String testRedis(HttpServletRequest request, HttpServletResponse response, String key, String value)
-	{
-		LOG.info("get testRedis ,key:" + key + ",value:" + value);
-		try
-		{
-			//proxy.set(key, value);
-		}
-		catch (Exception e)
-		{
-			LOG.error("exception during testRedis", e);
-		}
-		return "100";
-	}
-
-	@RequestMapping(value = "/getRedis.html")
-	@ResponseBody
-	public String testgetRedis(HttpServletRequest request, HttpServletResponse response, String key)
-	{
-		LOG.info("get testgetRedis ,key:" + key);
-		String value;
-		try
-		{
-			value = null;//(String) proxy.get(key);
-			LOG.info("get testgetRedis ,key:" + key + ",value:" + value);
-		}
-		catch (Exception e)
-		{
-			LOG.error("exception during testgetRedis", e);
-			value = "exception";
-		}
-		return value;
-	}
 }
