@@ -891,4 +891,25 @@ public class PetriNet extends Graph
 		sb.append("=======================================================\n");
 		return sb.toString();
 	}
+
+	public Transition[] getTransitions()
+	{
+		return transitions;
+	}
+
+	public void setTransitions(Transition[] transitions)
+	{
+		this.transitions = transitions;
+	}
+
+	public Place[] getPlaces()
+	{
+		return places;
+	}
+
+	public void setPlaces(Place[] places)
+	{
+		this.places = places;
+	}
+
 }

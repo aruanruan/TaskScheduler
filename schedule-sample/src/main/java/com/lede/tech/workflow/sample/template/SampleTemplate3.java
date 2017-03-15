@@ -18,21 +18,21 @@ public class SampleTemplate3 implements ProcessTemplate
 	private long delay = 5 * 1000 + offset;
 	private boolean cond = true;
 
-	@Node(name = "n00", next = "[n01,(c02:n02,c03:n03)]")
+	@Node(name = "n00", next = "[n01,n05]")
 	public String node00()
 	{
 		System.out.println("执行节点n00执行任务");
 		return ProcessTemplate.SUCCESS;
 	}
 
-	@Node(name = "n01", next = "n04")
+	@Node(name = "n01", next = "n06", previous = "n03")
 	public String node01()
 	{
 		System.out.println("执行节点n01执行任务");
 		return ProcessTemplate.SUCCESS;
 	}
 
-	@Node(name = "n02", retryDelay = 100, retryTimes = 10)
+	@Node(name = "n02", retryDelay = 100, retryTimes = 10, next = "n06")
 	public String node02()
 	{
 		System.out.println("执行节点n02执行任务");
@@ -51,28 +51,28 @@ public class SampleTemplate3 implements ProcessTemplate
 		return cond;
 	}
 
-	@Node(name = "n03", next = "n05")
+	@Node(name = "n03")
 	public String node03()
 	{
 		System.out.println("执行节点n03执行任务");
 		return ProcessTemplate.SUCCESS;
 	}
 	
-	@Node(name = "n04")
+	@Node(name = "n04", next = "n06")
 	public String node04()
 	{
 		System.out.println("执行节点n04执行任务");
 		return ProcessTemplate.SUCCESS;
 	}
 
-	@Node(name = "n05")
+	@Node(name = "n05", next = "n06")
 	public String node05()
 	{
 		System.out.println("执行节点n05执行任务");
 		return ProcessTemplate.SUCCESS;
 	}
 
-	@Node(name = "n06", previous = "[n04,n05]")
+	@Node(name = "n06")
 	public String node06()
 	{
 		System.out.println("执行节点n06执行任务");
